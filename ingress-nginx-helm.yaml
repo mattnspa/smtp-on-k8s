@@ -1,0 +1,19 @@
+# https://github.com/nginxinc/kubernetes-ingress/tree/c44b1a5807bd74ed01adfb222888be6447662c68/deployments/helm-chart
+controller:
+  globalConfiguration:
+    create: true
+    spec:
+      listeners:
+      - name: smtp-tcp
+        port: 25
+        protocol: TCP
+  customPorts:
+  - name: smtp
+    containerPort: 25
+    protocol: TCP
+  service:
+    customPorts:
+    - name: smtp
+      port: 25
+      protocol: TCP
+      targetPort: smtp
